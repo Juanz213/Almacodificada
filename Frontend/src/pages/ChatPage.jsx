@@ -14,26 +14,19 @@ export default function ChatPage() {
     setInput("");
     setLoading(true);
 
-    try {
-      const respuesta = await fetch("http://localhost:4000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensaje: textoUsuario }),
-      });
+    // Simulación dummy de la respuesta IA
+    setTimeout(() => {
+      let respuestaDummy = "Este es un mensaje de prueba (dummy).";
 
-      if (!respuesta.ok) throw new Error("Error en la respuesta del servidor");
+      if (textoUsuario.toLowerCase().includes("hola")) {
+        respuestaDummy = "¡Hola! Soy tu IA en modo dummy 😊";
+      } else if (textoUsuario.toLowerCase().includes("adios")) {
+        respuestaDummy = "Hasta luego 👋, gracias por probar el modo dummy.";
+      }
 
-      const data = await respuesta.json();
-
-      setMensajes((prev) => [...prev, { texto: data.respuesta, autor: "ia" }]);
-    } catch (error) {
-      setMensajes((prev) => [
-        ...prev,
-        { texto: "IA: Error al conectar con el servidor.", autor: "ia" },
-      ]);
-    } finally {
+      setMensajes((prev) => [...prev, { texto: respuestaDummy, autor: "ia" }]);
       setLoading(false);
-    }
+    }, 1000); // Simula retraso de 1 segundo
   };
 
   useEffect(() => {
@@ -59,8 +52,9 @@ export default function ChatPage() {
           style={styles.avatarImage}
         />
         <p style={styles.welcomeText}>
-          Hola, soy tu asistente virtual. ¿En qué puedo ayudarte hoy?
-          nota: en esta parte se inserta a Lia o el avatar seleccionado
+          Hola, soy tu asistente virtual (dummy). ¿En qué puedo ayudarte hoy?
+          <br />
+          Nota: en esta parte se inserta a Lia o el avatar seleccionado.
         </p>
       </aside>
 
