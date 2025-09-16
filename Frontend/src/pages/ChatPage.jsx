@@ -14,19 +14,19 @@ export default function ChatPage() {
     setInput("");
     setLoading(true);
 
-    // Simulación dummy de la respuesta IA
+    // Simulación dummy
     setTimeout(() => {
       let respuestaDummy = "Este es un mensaje de prueba (dummy).";
 
       if (textoUsuario.toLowerCase().includes("hola")) {
-        respuestaDummy = "¡Hola! Soy tu IA en modo dummy 😊";
+        respuestaDummy = "¡Hola! Soy Lia tu asistente en alma codificada! 😊";
       } else if (textoUsuario.toLowerCase().includes("adios")) {
-        respuestaDummy = "Hasta luego 👋, gracias por probar el modo dummy.";
+        respuestaDummy = "Hasta luego 👋, Muchas gracias por haber conversado conmigo!.";
       }
 
       setMensajes((prev) => [...prev, { texto: respuestaDummy, autor: "ia" }]);
       setLoading(false);
-    }, 1000); // Simula retraso de 1 segundo
+    }, 1000); // retraso de 1 segundo
   };
 
   useEffect(() => {
@@ -52,9 +52,8 @@ export default function ChatPage() {
           style={styles.avatarImage}
         />
         <p style={styles.welcomeText}>
-          Hola, soy tu asistente virtual (dummy). ¿En qué puedo ayudarte hoy?
+          Hola, soy tu asistente virtual Lia. ¿En qué puedo ayudarte hoy?
           <br />
-          Nota: en esta parte se inserta a Lia o el avatar seleccionado.
         </p>
       </aside>
 
@@ -72,7 +71,7 @@ export default function ChatPage() {
               {msg.texto}
             </div>
           ))}
-          {loading && <div style={styles.loading}>IA está escribiendo...</div>}
+          {loading && <div style={styles.loading}>Lia está escribiendo...</div>}
         </div>
         <div style={styles.inputBox}>
           <textarea
